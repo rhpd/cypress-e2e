@@ -1,0 +1,16 @@
+{
+  "name": "dynamic-slider",
+  "version": "1.0.0",
+  "description": "cypress end-to-end tests for dynamic slider",
+  "main": "index.js",
+  "author": "Richard Dahmen",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^6.4.0",
+    "typescript": "^4.1.4"
+  },
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run:electron:headless": "cypress run"
+  }
+}
