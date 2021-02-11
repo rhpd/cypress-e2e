@@ -5,7 +5,7 @@ const baseUrl = 'https://dynamic-slider-staging.azurewebsites.net/'
 const user = {
     name: "Josken",
     surname: "Vermeulen",
-    email: "josken.vermeulen@Belgium.de",
+    email: "josken.vermeulen@belgium.de",
     phone: "++491234567",
     streetAndNumber: "Lüttischer Straße 30",
     germanPostalCode: 52059,
