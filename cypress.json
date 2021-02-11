@@ -1,3 +1,5 @@
 {
+  "env": {
     "baseUrl": "https://dynamic-slider-staging.azurewebsites.net/"
-  }
+  }    
+}

@@ -1,7 +1,5 @@
 import { Given, When, Then, And, RoofType, PeopleCount, PowerUsageTimes, WindowsOnRoof } from "../../support/steps/stepsLibrary"
 
-const baseUrl = 'https://dynamic-slider-staging.azurewebsites.net/'
-
 const user = {
     firstName: "Josken",
     lastName: "Vermeulen",
@@ -14,12 +12,6 @@ const user = {
 }
 
 describe('Solarstrom-check tests for gable roofs as owner of the property', () => {
-    beforeEach( () => {
-        cy.visit(baseUrl)
-        cy.intercept('POST', 'https://sigx-stg.azurewebsites.net/send', {
-            statusCode: 200
-        })
-    })
 
     it('should tell me how much I can economise with: 1-2 people, morning and evening usage', () => {
         Given.iWantToKnowIfICanSaveOnMyEnergyBill(user)

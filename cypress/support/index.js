@@ -18,3 +18,13 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+beforeEach(() => {
+    cy.visit(Cypress.env('baseUrl'))
+    if (Cypress.env('mocked') === 'yes') {
+        cy.intercept('POST', 'https://sigx-stg.azurewebsites.net/send', {
+            statusCode: 200
+        })
+    }
+        
+})
