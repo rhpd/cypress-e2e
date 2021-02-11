@@ -8,10 +8,10 @@ import { ThankYouForYourInterstPage } from './../pages/thankYouForYourInterstPag
 import { TimeOfPowerUsageQuestionPage } from './../pages/timeOfPowerUsageQuestionPage'
 
 export class Pages {
-    private static shared: Pages
+    private static _shared: Pages
 
     public static Shared() {
-        return this.shared || (this.shared = new this())
+        return this._shared || (this._shared = new this())
     }
 
     public enterPostalCodePage() {

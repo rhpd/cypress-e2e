@@ -1,12 +1,8 @@
-export interface PageObjectProtocol {
-
-}
-
-export abstract  class PageObject {
-    private pageTrait: string;
+export abstract class PageObject {
+    private _pageTrait: string;
 
     constructor(pageTrait: string) {
-        this.pageTrait = pageTrait
-        cy.get(this.pageTrait).should('exist')
+        this._pageTrait = pageTrait
+        cy.get(this._pageTrait).should('exist')
     }
 }

@@ -1,19 +1,24 @@
-import { PageObject } from './abstractPage'
+import { ButtonsPage } from './abstractButtonsPage'
 
-export class TimeOfPowerUsageQuestionPage extends PageObject{
+export class TimeOfPowerUsageQuestionPage extends ButtonsPage{
 
-    private buttonBaseSelector = '[data-testid="answer"]'
-
-    private morningAndEveningAnswerButtonIndex = 0
-    private spreadDuringTheDayAnswerButtonIndex = 1
-    private somethingElseAnswerButtonIndex = 2
+    private _morningAndEveningAnswerButtonIndex = 0
+    private _spreadDuringTheDayAnswerButtonIndex = 1
+    private _somethingElseAnswerButtonIndex = 2
 
     constructor() {
-        super('[data-testid="qc_3"]')
-        cy.get(this.buttonBaseSelector).should('have.have.length', 3)
+        super('[data-testid="qc_3"]', 3)
     }
 
     public morningAndEveningButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.morningAndEveningAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._morningAndEveningAnswerButtonIndex)
+    }
+
+    public spreadDuringTheDayButton() {
+        return cy.get(this.buttonBaseSelector()).eq(this._spreadDuringTheDayAnswerButtonIndex)
+    }
+
+    public somethingElseButton() {
+        return cy.get(this.buttonBaseSelector()).eq(this._somethingElseAnswerButtonIndex)
     }
 }

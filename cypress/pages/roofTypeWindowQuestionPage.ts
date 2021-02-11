@@ -1,27 +1,24 @@
-import { PageObject } from './abstractPage'
+import { ButtonsPage } from './abstractButtonsPage'
 
-export class RoofTypeWindowQuestionPage extends PageObject {
+export class RoofTypeWindowQuestionPage extends ButtonsPage {
 
-    private buttonBaseSelector = '[data-testid="answer"]'
-
-    private yesAnswerButtonIndex = 0
-    private noAnswerButtonIndex = 1
-    private dontKnowAnserButtonIndex = 2
+    private _yesAnswerButtonIndex = 0
+    private _noAnswerButtonIndex = 1
+    private _dontKnowAnserButtonIndex = 2
 
     constructor() {
-        super('[data-testid="qc_1"]')
-        cy.get(this.buttonBaseSelector).should('have.have.length', 3)
+        super('[data-testid="qc_1"]', 3)
     }
 
     public yesAnswerButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.yesAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._yesAnswerButtonIndex)
     }
 
     public noAnswerButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.noAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._noAnswerButtonIndex)
     }
 
     public dontKnowAnserButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.dontKnowAnserButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._dontKnowAnserButtonIndex)
     }
 }

@@ -1,18 +1,18 @@
-import { PageObject } from './abstractPage'
+import { ButtonsPage } from './abstractButtonsPage'
+export class PropertyOwnerQuestionPage extends ButtonsPage{
 
-export class PropertyOwnerQuestionPage extends PageObject{
-
-    private buttonBaseSelector = '[data-testid="answer"]'
-
-    private yesAnswerButtonIndex = 0
-    private noAnswerButtonIndex = 1
+    private _yesAnswerButtonIndex = 0
+    private _noAnswerButtonIndex = 1
 
     constructor() {
-        super('[data-testid="qc_4"]')
-        cy.get(this.buttonBaseSelector).should('have.have.length', 2)
+        super('[data-testid="qc_4"]', 2)
     }
 
     public yesAnswerButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.yesAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._yesAnswerButtonIndex)
+    }
+
+    public noAnswerButton() {
+        return cy.get(this.buttonBaseSelector()).eq(this._noAnswerButtonIndex)
     }
 }

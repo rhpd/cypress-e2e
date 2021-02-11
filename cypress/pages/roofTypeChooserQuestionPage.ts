@@ -1,32 +1,29 @@
-import { PageObject } from './abstractPage'
+import { ButtonsPage } from './abstractButtonsPage'
 
-export class RoofChooserQuestionPage extends PageObject{
+export class RoofChooserQuestionPage extends ButtonsPage{
 
-    private buttonBaseSelector = '[data-testid="answer"]'
-
-    private sattelDachAnswerButtonIndex = 0
-    private flachDachAnswerButtonIndex = 1
-    private pultDachAnswerButtonIndex = 2
-    private anderesDachAnswerButtonIndex = 3
+    private _sattelDachAnswerButtonIndex = 0
+    private _flachDachAnswerButtonIndex = 1
+    private _pultDachAnswerButtonIndex = 2
+    private _anderesDachAnswerButtonIndex = 3
 
     constructor() {
-        super('[data-testid="qc_0"]')
-        cy.get(this.buttonBaseSelector).should('have.have.length', 4)
+        super('[data-testid="qc_0"]', 4)
     }
 
     public sattelDachButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.sattelDachAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._sattelDachAnswerButtonIndex)
     }
 
     public flachDachButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.flachDachAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._flachDachAnswerButtonIndex)
     }
 
     public pultDachButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.pultDachAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._pultDachAnswerButtonIndex)
     }
 
     public anderesDachButton() {
-        return cy.get(this.buttonBaseSelector).eq(this.anderesDachAnswerButtonIndex)
+        return cy.get(this.buttonBaseSelector()).eq(this._anderesDachAnswerButtonIndex)
     }
 }
