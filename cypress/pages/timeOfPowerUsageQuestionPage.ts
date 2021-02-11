@@ -13,7 +13,7 @@ export class TimeOfPowerUsageQuestionPage extends PageObject{
         cy.get(this.buttonBaseSelector).should('have.have.length', 3)
     }
 
-    public oneToTwoButton() {
+    public morningAndEveningButton() {
         return cy.get(this.buttonBaseSelector).eq(this.morningAndEveningAnswerButtonIndex)
     }
 }
