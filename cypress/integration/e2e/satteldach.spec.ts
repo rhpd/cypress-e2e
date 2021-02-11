@@ -1,32 +1,43 @@
-import { Pages } from "../../support/pageFactory"
+import { Given, When, Then, And, RoofType, PeopleCount, PowerUsageTimes } from "../../support/steps/stepsLibrary"
 
 const baseUrl = 'https://dynamic-slider-staging.azurewebsites.net/'
 
 const user = {
-    name: "Josken",
-    surname: "Vermeulen",
+    firstName: "Josken",
+    lastName: "Vermeulen",
     email: "josken.vermeulen@belgium.de",
-    phone: "++491234567",
+    phone: "+491234567",
     streetAndNumber: "Lüttischer Straße 30",
     germanPostalCode: 52059,
     city: "Aachen"
 }
 
 describe('Solarstrom-check tests for gable roofs', () => {
-    it('Does not know yet what it is going to test', () => {
+    beforeEach( () => {
         cy.visit(baseUrl)
-        Pages.Shared().roofChooserQuestionPage().sattelDachButton().click()
-        Pages.Shared().roofTypeWindowQuestionPage().yesAnswerButton().click()
-        Pages.Shared().peopleInHouseholdQuestionPage().oneToTwoButton().click()
-        Pages.Shared().timeOfPowerUsageQuestionPage().morningAndEveningButton().click()
-        Pages.Shared().propertyOwnerQuestionPage().yesAnswerButton().click()
-        Pages.Shared().enterPostalCodePage().postalCodeInputTextfield().type(user.germanPostalCode.toString())
-        Pages.Shared().enterPostalCodePage().submitButton().click()
-        Pages.Shared().successPage().nameAndSurnameInputTextfield().type(`${user.name} ${user.surname}`)
-        Pages.Shared().successPage().streetAndHouseNumberInputTextfield().type(user.streetAndNumber)
-        Pages.Shared().successPage().phoneNumberInputTextfield().type(user.phone)
-        Pages.Shared().successPage().emailInputTextfield().type(user.email)
-        Pages.Shared().successPage().freeInformationSubmitButton().click()
-        Pages.Shared().thankYouForYourInterstPage()
+        cy.intercept('POST', 'https://sigx-stg.azurewebsites.net/send', {
+            statusCode: 200
+        })
+    })
+
+    it('should tell me how much I can economise by installing solar panels', () => {
+        Given.iWantToKnowIfICanSaveOnMyEnergyBill(user)
+        And.myRoofTypeIs(RoofType.GableRoof)
+        And.theAmountOfPeopleInMyHouseIs(PeopleCount.OneToTwo)
+        And.myTimeOfPowerUsage(PowerUsageTimes.MorningAndEvening)
+        And.theHouseIsMyPropery(true)
+        When.iGoThroughTheSolarChecker()
+        Then.iSeeHowMuchICanEconomise()
+    })
+
+    it('should subscribe correctly after going through the Solar Checker', () => {
+        Given.iWantToKnowIfICanSaveOnMyEnergyBill(user)
+        And.myRoofTypeIs(RoofType.GableRoof)
+        And.theAmountOfPeopleInMyHouseIs(PeopleCount.OneToTwo)
+        And.myTimeOfPowerUsage(PowerUsageTimes.MorningAndEvening)
+        And.theHouseIsMyPropery(true)
+        When.iGoThroughTheSolarChecker()
+        And.iFillInMyPersonalData()
+        Then.iGetConfirmationMyPersonalDataIsSentCorrectly()
     })
 })
