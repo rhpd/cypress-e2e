@@ -13,6 +13,10 @@ Prerequisites
 
 How To Run
 =============
+## Install dependencies:
+````
+yarn install
+````
 ## Run with Cypress dev tools:
 These will probably run on Microsoft Windows (untested)
 ````
