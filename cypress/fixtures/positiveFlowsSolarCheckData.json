@@ -1,0 +1,38 @@
+[
+    {
+        "postalCode": "00000",
+        "isOwner": true,
+        "roofType": 0,
+        "peopleCount": 2,
+        "roofWindows": 1,
+        "powerConsumptionType": 2
+    },{
+        "postalCode": "76740",
+        "isOwner": false,
+        "roofType": 1,
+        "peopleCount": 1,
+        "roofWindows": 2,
+        "powerConsumptionType": 1
+    },{
+        "postalCode": "24797",
+        "isOwner": true,
+        "roofType": 2,
+        "peopleCount": 0,
+        "roofWindows": 2,
+        "powerConsumptionType": 0
+    },{
+        "postalCode": "97385",
+        "isOwner": false,
+        "roofType": 3,
+        "peopleCount": 1,
+        "roofWindows": 1,
+        "powerConsumptionType": 1
+    },{
+        "postalCode": "26067",
+        "isOwner": true,
+        "roofType": 0,
+        "peopleCount": 2,
+        "roofWindows": 2,
+        "powerConsumptionType": 2
+    }
+]

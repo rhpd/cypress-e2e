@@ -4,7 +4,7 @@ export interface ConformsToUserInfo {
     email: string
     phone: string
     streetAndNumber: string
-    germanPostalCode: number
+    germanPostalCode: string
     city: string
     isOwner: boolean
     hasRoofType: RoofType
@@ -19,7 +19,7 @@ export class User implements ConformsToUserInfo {
     email: string
     phone: string
     streetAndNumber: string
-    germanPostalCode: number
+    germanPostalCode: string
     city: string
     isOwner: boolean
     hasRoofType: RoofType

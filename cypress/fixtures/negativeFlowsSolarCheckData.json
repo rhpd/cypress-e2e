@@ -1,0 +1,27 @@
+[
+    {
+        "description": "without postal code",
+        "postalCode": "",
+        "isOwner": true,
+        "roofType": 0,
+        "peopleCount": 0,
+        "roofWindows": 0,
+        "powerConsumptionType": 0
+    },{
+        "description": "without a non-german postal code",
+        "postalCode": "1180",
+        "isOwner": true,
+        "roofType": 0,
+        "peopleCount": 0,
+        "roofWindows": 0,
+        "powerConsumptionType": 0
+    },{
+        "description": "who uses non-numeric data as postal code",
+        "postalCode": "Dresden",
+        "isOwner": true,
+        "roofType": 0,
+        "peopleCount": 0,
+        "roofWindows": 0,
+        "powerConsumptionType": 0
+    }
+]
