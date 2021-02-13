@@ -1,7 +1,6 @@
 import { ButtonsPage } from './abstractButtonsPage'
 
 export class TimeOfPowerUsageQuestionPage extends ButtonsPage{
-
     private _morningAndEveningAnswerButtonIndex = 0
     private _spreadDuringTheDayAnswerButtonIndex = 1
     private _somethingElseAnswerButtonIndex = 2

@@ -21,23 +21,23 @@ export class RegistrationPositiveSteps extends GenericSteps {
     }
 
     public iFillInMyPersonalData() {
-        let successPage = Pages.Shared().successPage()
-        successPage.typeTextIntoTextfield(`${this.testUser.firstName} ${this.testUser.lastName}`, successPage.nameAndSurnameInputTextfield())
-        successPage.typeTextIntoTextfield(this.testUser.streetAndNumber, successPage.streetAndHouseNumberInputTextfield())
-        successPage.typeTextIntoTextfield(this.testUser.phone, successPage.phoneNumberInputTextfield())
-        successPage.typeTextIntoTextfield(this.testUser.email, successPage.emailInputTextfield())
+        let personalDetailsPage = Pages.Shared().personalDetailsPage()
+        personalDetailsPage.typeTextIntoTextfield(`${this.testUser.firstName} ${this.testUser.lastName}`, personalDetailsPage.nameAndSurnameInputTextfield())
+        personalDetailsPage.typeTextIntoTextfield(this.testUser.streetAndNumber, personalDetailsPage.streetAndHouseNumberInputTextfield())
+        personalDetailsPage.typeTextIntoTextfield(this.testUser.phone, personalDetailsPage.phoneNumberInputTextfield())
+        personalDetailsPage.typeTextIntoTextfield(this.testUser.email, personalDetailsPage.emailInputTextfield())
     }
 
     public iWantToSubmitMyPersonalData() {
-        Pages.Shared().successPage().freeInformationSubmitButton().click()
+        Pages.Shared().personalDetailsPage().freeInformationSubmitButton().click()
     }
 
     public iCannotSubmitMyPersonalData() {
-        Pages.Shared().successPage().freeInformationSubmitButton().should('be.disabled')
+        Pages.Shared().personalDetailsPage().freeInformationSubmitButton().should('be.disabled')
     }
 
     public iGetConfirmationMyPersonalDataIsSentCorrectly() {
-        Pages.Shared().thankYouForYourInterstPage()// TODO: Add assertion
+        Pages.Shared().thankYouForYourInterstPage().assertSuccessText()
     }
 }
 

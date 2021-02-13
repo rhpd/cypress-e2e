@@ -3,9 +3,10 @@ import { PeopleInHouseholdQuestionPage } from '../pages/peopleInHouseholdQuestio
 import { PropertyOwnerQuestionPage } from './../pages/propertyOwnerQuestionPage'
 import { RoofChooserQuestionPage } from '../pages/roofTypeChooserQuestionPage'
 import { RoofTypeWindowQuestionPage } from './../pages/roofTypeWindowQuestionPage'
-import { SuccessPage } from './../pages/successPage'
+import { PersonalDetailsPage } from '../pages/personalDetailsPage'
 import { ThankYouForYourInterstPage } from './../pages/thankYouForYourInterstPage'
 import { TimeOfPowerUsageQuestionPage } from './../pages/timeOfPowerUsageQuestionPage'
+import { SuccessPage } from '../pages/successPage'
 
 export class Pages {
     private static _shared: Pages
@@ -20,6 +21,10 @@ export class Pages {
 
     public peopleInHouseholdQuestionPage() {
         return new PeopleInHouseholdQuestionPage()
+    }
+
+    public personalDetailsPage() {
+        return new PersonalDetailsPage()
     }
 
     public propertyOwnerQuestionPage() {

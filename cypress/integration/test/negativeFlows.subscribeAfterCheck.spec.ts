@@ -1,7 +1,7 @@
 import { AND, GIVEN, THEN, WHEN } from "../../stepsLib/registrationSteps"
 import { RegisteringUser } from "../../support/data/registeringUserTestData"
 
-describe('Data driven dynamic tests for invalid postal codes', () => {
+describe('Data driven dynamic tests for invalid completion of registration form', () => {
 
     const jsonArrayData = require('./../../fixtures/negativeFlowsSubscriptionData.json')
 

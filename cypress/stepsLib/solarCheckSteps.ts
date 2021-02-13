@@ -8,12 +8,12 @@ export class SolarCheckPostiveSteps extends GenericSteps {
         return this._shared || (this._shared = new this())
     }
 
-    public iSeeHowMuchICanEconomise() {
-        Pages.Shared().enterPostalCodePage()// TODO: Add assertion
-    }
-
     public iCannotSubmitMyPostalCode() {
         Pages.Shared().enterPostalCodePage().submitButton().should('be.disabled')
+    }
+
+    public iSeeHowMuchICanEconomise() {
+        Pages.Shared().successPage().assertSuccessfulPostalCodeSubmission()
     }
 }
 

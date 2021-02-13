@@ -1,7 +1,6 @@
 import { PageObject } from './abstractPage'
 
 export class EnterPostalCodePage extends PageObject{
-
     private _germanPostalcodeInputTextfieldSelector = '[name="zipCode"]'
     private _postalcodeSubmitButtonSelector = '[data-testid="submit"]'
 

@@ -1,9 +1,9 @@
 export abstract class PageObject {
-    private _pageTrait: string;
+    public pageTrait: string;
 
     constructor(pageTrait: string) {
-        this._pageTrait = pageTrait
-        cy.get(this._pageTrait).should('exist')
+        this.pageTrait = pageTrait
+        cy.get(this.pageTrait).should('exist')
     }
 
     public typeTextIntoTextfield(textToType: string, textField: any) {

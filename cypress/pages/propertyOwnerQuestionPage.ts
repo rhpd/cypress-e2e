@@ -1,6 +1,5 @@
 import { ButtonsPage } from './abstractButtonsPage'
 export class PropertyOwnerQuestionPage extends ButtonsPage{
-
     private _yesAnswerButtonIndex = 0
     private _noAnswerButtonIndex = 1
 

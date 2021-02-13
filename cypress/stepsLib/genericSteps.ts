@@ -67,10 +67,6 @@ export class GenericSteps{
         
     }
 
-    public iGetConfirmationMyPersonalDataIsSentCorrectly() {
-        Pages.Shared().thankYouForYourInterstPage()// TODO: Add assertion
-    }
-
     private enterUserDataOnOwnership() {
         if (this.testUser.isOwner) {
             Pages.Shared().propertyOwnerQuestionPage().yesAnswerButton().click()

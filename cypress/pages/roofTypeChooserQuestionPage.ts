@@ -1,7 +1,6 @@
 import { ButtonsPage } from './abstractButtonsPage'
 
 export class RoofChooserQuestionPage extends ButtonsPage{
-
     private _sattelDachAnswerButtonIndex = 0
     private _flachDachAnswerButtonIndex = 1
     private _pultDachAnswerButtonIndex = 2
