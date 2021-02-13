@@ -1,14 +1,5 @@
+import { ConformsToUserInfo, PeopleCount, PowerUsageTimes, RoofType, WindowsOnRoof } from '../data/userTestData'
 import { Pages } from '../pageFactory'
-
-interface UserInfoProtocol {
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    streetAndNumber: string
-    germanPostalCode: number
-    city: string
-}
 
 class UserTestData {
     public userFirstName: string
@@ -34,14 +25,14 @@ export class Steps{
 
     private _testData = new UserTestData()
 
-    public iWantToKnowIfICanSaveOnMyEnergyBill(userInfo: UserInfoProtocol) {
-        this._testData.userFirstName = userInfo.firstName
-        this._testData.userLastName = userInfo.lastName
-        this._testData.userEmail = userInfo.email
-        this._testData.userPhoneNumber = userInfo.phone
-        this._testData.userAddress = userInfo.streetAndNumber
-        this._testData.userPostalCode = userInfo.germanPostalCode
-        this._testData.userCity = userInfo.city
+    public iWantToKnowIfICanSaveOnMyEnergyBill(user: ConformsToUserInfo) {
+        this._testData.userFirstName = user.firstName
+        this._testData.userLastName = user.lastName
+        this._testData.userEmail = user.email
+        this._testData.userPhoneNumber = user.phone
+        this._testData.userAddress = user.streetAndNumber
+        this._testData.userPostalCode = user.germanPostalCode
+        this._testData.userCity = user.city
     }
 
     public myRoofTypeIs(roofType: RoofType) {
@@ -161,31 +152,7 @@ export class Steps{
     }
 }
 
-export enum WindowsOnRoof {
-    Yes,
-    No,
-    DontKnow,
-}
 
-export enum PowerUsageTimes {
-    MorningAndEvening,
-    SpreadDuringTheDay,
-    SomethingElse,
-}
-
-export enum PeopleCount {
-    OneToTwo,
-    ThreeToFour,
-    FivaAndMore,
-    NoIdea,
-}
-
-export enum RoofType {
-    GableRoof,
-    FlatRoof,
-    PentRoof,
-    OtherRoof,
-}
 
 export let Given = Steps.Shared()
 export let When = Steps.Shared()

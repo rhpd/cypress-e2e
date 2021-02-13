@@ -26,5 +26,4 @@ beforeEach(() => {
             statusCode: 200
         })
     }
-        
 })

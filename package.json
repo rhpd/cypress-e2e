@@ -12,6 +12,7 @@
   "scripts": {
     "cypress:open:mocked": "cypress open --env mocked=yes",
     "cypress:open": "cypress open",
-    "cypress:run:electron:headless": "cypress run"
+    "cypress:run:electron:headless": "cypress run",
+    "cypress:run:electron:headless:mocked": "cypress run --env mocked=yes"
   }
 }
