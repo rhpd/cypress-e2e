@@ -1,5 +1,12 @@
 {
   "env": {
     "baseUrl": "https://dynamic-slider-staging.azurewebsites.net/"
+  },
+  "reporter": "../node_modules/mochawesome/src/mochawesome.js",
+  "reporterOptions": {
+    "reportDir": "cypress/report/mochawesome-specs-reports",
+    "overwrite": false,
+    "html": false,
+    "json": true
   }    
 }
