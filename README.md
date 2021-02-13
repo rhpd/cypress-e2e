@@ -7,7 +7,7 @@ Prerequisites
 - Linux/Unix or macOS<sup>*1</sup>
 - Chrome & Firefox installed<sup>*2</sup>
 
-<sup>*1</sup>: Only been tested on macOS
+<sup>*1</sup>: No available windows machine, only tested on macOS
 
 *2: Firefox and chrome need to be installed for tests to be executed against them
 
