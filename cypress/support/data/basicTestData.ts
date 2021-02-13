@@ -16,7 +16,6 @@ export class BasicUser implements ConformsToBasicUserInfo {
     powerConsumptionType: PowerUsageTimes
 
     constructor(jsonObject?) {
-        console.log(jsonObject)
         if (jsonObject != undefined) {
             this.postalCode = jsonObject.postalCode
             this.isOwner = jsonObject.isOwner
@@ -28,9 +27,11 @@ export class BasicUser implements ConformsToBasicUserInfo {
     }
 
     public generateTestDescription() {
-        let returnString = `user with roof type: ${RoofType[this.roofType]}, roof windows: ${WindowsOnRoof[this.roofWindows]}, people: ${PeopleCount[this.peopleCount]}, power usage: ${PowerUsageTimes[this.powerConsumptionType]} and`
+        let returnString = `user with roof type: ${RoofType[this.roofType]}, `
+        returnString += `roof windows: ${WindowsOnRoof[this.roofWindows]}, `
+        returnString += `people: ${PeopleCount[this.peopleCount]}, `
+        returnString += `power usage: ${PowerUsageTimes[this.powerConsumptionType]} and`
         return (this.isOwner ? `${returnString} who owns the property` : `${returnString} who doesn't own the property`);
-
     }
 }
 

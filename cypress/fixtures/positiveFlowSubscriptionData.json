@@ -1,0 +1,13 @@
+{
+    "firstName": "Balduin",
+    "lastName": "Bienlein",
+    "email": "balduin.bienlein@muehlenhof.be",
+    "phone": "+490000421",
+    "streetAndNumber": "Lütticher Straße 30",
+    "postalCode": "52064",
+    "isOwner": false,
+    "roofType": 3,
+    "peopleCount": 2,
+    "roofWindows": 2,
+    "powerConsumptionType": 2
+}

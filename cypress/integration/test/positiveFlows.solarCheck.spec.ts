@@ -1,16 +1,15 @@
 import { BasicUser } from "../../support/data/basicTestData"
-import { GIVEN, AND, WHEN, THEN } from "../../stepsLib/solarCheckPositiveSteps"
+import { GIVEN, AND, WHEN, THEN } from "../../stepsLib/solarCheckSteps"
 
-describe('As a Person with an owned property I want to know if I can economise with solar panels', () => {
+describe('Data driven dynamic tests for different solar check combinations', () => {
 
-    const users = require('./../../fixtures/positiveFlowsSolarCheckData.json')
+    const jsonArrayData = require('./../../fixtures/positiveFlowsSolarCheckData.json')
 
-    users.forEach((testUser) => {
+    jsonArrayData.forEach((jsonData) => {
 
-        let user = new BasicUser(testUser)
+        let user = new BasicUser(jsonData)
 
         it(`should not have any issues with a user like ${user.generateTestDescription()}`, () => {
-            cy.log(JSON.stringify(user))
             GIVEN.iWantToKnowIfICanSaveOnMyEnergyBill(user)
             AND.myRoofTypeIs(user.roofType)
             AND.myRoofHasWindows(user.roofWindows)

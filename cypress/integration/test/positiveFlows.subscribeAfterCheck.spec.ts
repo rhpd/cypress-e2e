@@ -1,23 +1,25 @@
-import { PeopleCount, PowerUsageTimes, RoofType, User, WindowsOnRoof } from "../../support/data/userTestData"
-import { Given, And, When, Then } from "../../support/steps/stepsLibrary"
+import { GIVEN, AND, WHEN, THEN } from "../../stepsLib/registrationSteps"
+import { RegisteringUser } from "../../support/data/registeringUserTestData"
 
-describe('As a Person with an owned property I want to know if I can economise with solar panels', () => {
 
-    let users: User[]
+describe('Register with valid credentials', () => {
 
-    // TODO: Create Users
+    let jsonUserData = require('./../../fixtures/positiveFlowSubscriptionData')
 
-    users.forEach((testUser) => {
-        it('tests this user', () => {
-            Given.iWantToKnowIfICanSaveOnMyEnergyBill(testUser)
-            And.myRoofTypeIs(RoofType.GableRoof)
-            And.myRoofHasWindows(WindowsOnRoof.Yes)
-            And.theAmountOfPeopleInMyHouseIs(PeopleCount.OneToTwo)
-            And.myTimeOfPowerUsage(PowerUsageTimes.MorningAndEvening)
-            And.theHouseIsMyPropery(testUser.isOwner)
-            When.iGoThroughTheSolarChecker()
-            And.iFillInMyPersonalData()
-            Then.iGetConfirmationMyPersonalDataIsSentCorrectly()
-        })
+    it(`should have no problems registering when all fields are completed with valid data`, () => {
+
+        let user = new RegisteringUser(jsonUserData)
+
+        GIVEN.iWantToKnowIfICanSaveOnMyEnergyBill(user)
+        AND.myRoofTypeIs(user.roofType)
+        AND.myRoofHasWindows(user.roofWindows)
+        AND.theAmountOfPeopleInMyHouseIs(user.peopleCount)
+        AND.myTimeOfPowerUsage(user.powerConsumptionType)
+        AND.theHouseIsMyPropery(user.isOwner)
+        WHEN.iGoThroughTheSolarChecker()
+        AND.iSubmitMyPostalCode()
+        AND.iFillInMyPersonalData()
+        AND.iWantToSubmitMyPersonalData()
+        THEN.iGetConfirmationMyPersonalDataIsSentCorrectly()
     })
 })

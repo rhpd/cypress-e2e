@@ -11,6 +11,10 @@ export class SolarCheckPostiveSteps extends GenericSteps {
     public iSeeHowMuchICanEconomise() {
         Pages.Shared().enterPostalCodePage()// TODO: Add assertion
     }
+
+    public iCannotSubmitMyPostalCode() {
+        Pages.Shared().enterPostalCodePage().submitButton().should('be.disabled')
+    }
 }
 
 export let GIVEN = SolarCheckPostiveSteps.Shared()

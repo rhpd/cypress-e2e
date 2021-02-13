@@ -23,5 +23,21 @@
         "peopleCount": 0,
         "roofWindows": 0,
         "powerConsumptionType": 0
+    },{
+        "description": "who uses a non-existant postal code higher than 99998",
+        "postalCode": "99999",
+        "isOwner": true,
+        "roofType": 0,
+        "peopleCount": 0,
+        "roofWindows": 0,
+        "powerConsumptionType": 0
+    },{
+        "description": "who uses a non-existant postal code lower than 01067",
+        "postalCode": "01066",
+        "isOwner": true,
+        "roofType": 0,
+        "peopleCount": 0,
+        "roofWindows": 0,
+        "powerConsumptionType": 0
     }
 ]

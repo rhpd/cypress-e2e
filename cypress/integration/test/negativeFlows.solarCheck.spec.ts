@@ -1,16 +1,15 @@
-import { AND, GIVEN, THEN, WHEN } from "../../stepsLib/solarCheckNegativeSteps"
+import { AND, GIVEN, THEN, WHEN } from "../../stepsLib/solarCheckSteps"
 import { BasicUser } from "../../support/data/basicTestData"
 
-describe('As a Person with an owned property I want to know if I can economise with solar panels', () => {
+describe('Data driven dynamic tests for invalid postal codes', () => {
 
-    const users = require('./../../fixtures/negativeFlowsSolarCheckData.json')
+    const jsonArrayData = require('./../../fixtures/negativeFlowsSolarCheckData.json')
 
-    users.forEach((testUser) => {
+    jsonArrayData.forEach((jsonData) => {
 
-        let user = new BasicUser(testUser)
+        let user = new BasicUser(jsonData)
 
-        it(`should have issues when trying to register ${testUser.description}`, () => {
-            cy.log(JSON.stringify(user))
+        it(`should have issues when trying to register ${jsonData.description}`, () => {
             GIVEN.iWantToKnowIfICanSaveOnMyEnergyBill(user)
             AND.myRoofTypeIs(user.roofType)
             AND.myRoofHasWindows(user.roofWindows)

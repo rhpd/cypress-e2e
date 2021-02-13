@@ -1,5 +1,4 @@
-import { BasicUser, ConformsToBasicUserInfo } from '../support/data/basicTestData'
-import { PeopleCount, PowerUsageTimes, RoofType, WindowsOnRoof } from '../support/data/userTestData'
+import { BasicUser, ConformsToBasicUserInfo, PeopleCount, PowerUsageTimes, RoofType, WindowsOnRoof } from '../support/data/basicTestData'
 import { Pages } from '../support/pageFactory'
 
 /***********************************************************
@@ -17,37 +16,40 @@ import { Pages } from '../support/pageFactory'
     
     Sins against good coding practices:
         - using pronouns in method names (Could have used a different BDD way of describing steps)
-        - export the same instance multiple times under different names (GIVEN, AND, WHEN, THEN)
+        - export the same instance multiple times under different names (GIVEN, AND, WHEN, THEN) in different files
         - long method names (Tried to keep them as short as possible)
+
+    Other issues:
+        - Subclassing in Typescript seems to have it's own problems, code duplication in sublasses of
+          Generic steps as a result (creation of a singleton for every subclass' instance)
 
 ***********************************************************/
 
 export class GenericSteps{
-    private _testUser = new BasicUser()
+    public testUser = new BasicUser()
 
     public iWantToKnowIfICanSaveOnMyEnergyBill(user: ConformsToBasicUserInfo) {
-        this._testUser.postalCode = user.postalCode
+        this.testUser.postalCode = user.postalCode
     }
 
     public myRoofTypeIs(roofType: RoofType) {
-        this._testUser.roofType = roofType
-
+        this.testUser.roofType = roofType
     }
 
     public theAmountOfPeopleInMyHouseIs(count: PeopleCount) {
-        this._testUser.peopleCount = count
+        this.testUser.peopleCount = count
     }
 
     public myTimeOfPowerUsage(times: PowerUsageTimes) {
-        this._testUser.powerConsumptionType = times
+        this.testUser.powerConsumptionType = times
     }
 
     public theHouseIsMyPropery(houseOwner: boolean) {
-        this._testUser.isOwner = houseOwner
+        this.testUser.isOwner = houseOwner
     }
 
     public myRoofHasWindows(roofWindows: WindowsOnRoof) {
-        this._testUser.roofWindows = roofWindows
+        this.testUser.roofWindows = roofWindows
     }
 
     public iGoThroughTheSolarChecker() {
@@ -56,19 +58,8 @@ export class GenericSteps{
         this.enterUserDataOnPeopleInHouseholdPage()
         this.enterUserDataOnPowerUsagePage()
         this.enterUserDataOnOwnership()
-        /***********************************************************
-            Nasty Workarounds up next:
-            - Cypress refuses to type empty strings
-                Problem: Cypress throws an error when passing an empty string to ".type(string)"
-                Solution: Check for an empty string with an if-condition
-
-            - Check for empty string:
-                Problem: Typescript does not have something like "isEmpty: Bool { get }" (Documentation from Swift lang)
-                Solution: Using this nasty syntax: !== ''
-        ***********************************************************/
-        if (this._testUser.postalCode !== '') {
-            Pages.Shared().enterPostalCodePage().postalCodeInputTextfield().type(this._testUser.postalCode)
-        }
+        let postalCodePage = Pages.Shared().enterPostalCodePage()
+        postalCodePage.typeTextIntoTextfield(this.testUser.postalCode, postalCodePage.postalCodeInputTextfield())
     }
 
     public iSubmitMyPostalCode() {
@@ -81,7 +72,7 @@ export class GenericSteps{
     }
 
     private enterUserDataOnOwnership() {
-        if (this._testUser.isOwner) {
+        if (this.testUser.isOwner) {
             Pages.Shared().propertyOwnerQuestionPage().yesAnswerButton().click()
         } else {
             Pages.Shared().propertyOwnerQuestionPage().noAnswerButton().click()
@@ -89,7 +80,7 @@ export class GenericSteps{
     }
 
     private enterUserDataOnPowerUsagePage() {
-        switch (this._testUser.powerConsumptionType) {
+        switch (this.testUser.powerConsumptionType) {
             case PowerUsageTimes.MorningAndEvening:
                 Pages.Shared().timeOfPowerUsageQuestionPage().morningAndEveningButton().click()
                 break;
@@ -103,7 +94,7 @@ export class GenericSteps{
     }
 
     private enterUserDataOnRoofChooserPage() {
-        switch (this._testUser.roofType) {
+        switch (this.testUser.roofType) {
             case RoofType.GableRoof:
                 Pages.Shared().roofChooserQuestionPage().sattelDachButton().click()
                 break;
@@ -120,7 +111,7 @@ export class GenericSteps{
     }
 
     private enterUserDataOnRoofWindowChooserPage() {
-        switch (this._testUser.roofWindows) {
+        switch (this.testUser.roofWindows) {
             case WindowsOnRoof.Yes:
                 Pages.Shared().roofTypeWindowQuestionPage().yesAnswerButton().click()
                 break;
@@ -134,7 +125,7 @@ export class GenericSteps{
     }
 
     private enterUserDataOnPeopleInHouseholdPage() {
-        switch (this._testUser.peopleCount) {
+        switch (this.testUser.peopleCount) {
             case PeopleCount.OneToTwo:
                 Pages.Shared().peopleInHouseholdQuestionPage().oneToTwoButton().click()
                 break;
