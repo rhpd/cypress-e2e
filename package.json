@@ -8,12 +8,29 @@
   "devDependencies": {
     "@types/node": "^14.14.27",
     "cypress": "^6.4.0",
+    "mochawesome": "^6.2.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.1.0",
     "typescript": "^4.1.4"
   },
   "scripts": {
-    "cypress:open:mocked": "cypress open --env mocked=yes",
-    "cypress:open": "cypress open",
-    "cypress:run:electron:headless": "cypress run",
-    "cypress:run:electron:headless:mocked": "cypress run --env mocked=yes"
+    "test:dev:ui": "yarn run clean:reports && cypress open",
+    "test:dev:ui:mocked": "yarn run clean:reports && cypress open --env mocked=yes",
+    "test:electron": "yarn run clean:reports && cypress run --headed",
+    "test:electron:mocked": "yarn run clean:reports && cypress run --headed --env mocked=yes",
+    "test:electron:headless": "yarn run clean:reports && cypress run",
+    "test:electron:headless:mocked": "yarn run clean:reports && cypress run --env mocked=yes",
+    "test:firefox": "yarn run clean:reports && cypress run --headed --browser=firefox --env",
+    "test:firefox:headless": "yarn run clean:reports && cypress run --headless --browser=firefox --env",
+    "test:firefox:mocked": "yarn run clean:reports && cypress run --headed --browser=firefox --env mocked=yes",
+    "test:firefox:mocked:headless": "yarn run clean:reports && cypress run --headless --browser=firefox --env mocked=yes",
+    "test:chrome": "yarn run clean:reports && cypress run --headed --browser=chrome --env",
+    "test:chrome:headless": "yarn run clean:reports && cypress run --headless --browser=chrome --env",
+    "test:chrome:mocked": "yarn run clean:reports && cypress run --headed --browser=chrome --env mocked=yes",
+    "test:chrome:mocked:headless": "yarn run clean:reports && cypress run --headless --browser=chrome --env mocked=yes",
+    "clean:reports": "rm -rf cypress/report/",
+    "merge:reports": "mochawesome-merge cypress/report/mochawesome-specs-reports/*.json > cypress/report/combined-cypress-tests-report.json",
+    "create:html:report": "marge --reportDir cypress/report cypress/report/combined-cypress-tests-report.json",
+    "generate:html:report": "yarn run merge:reports && yarn run create:html:report"
   }
 }
