@@ -1,30 +1,6 @@
 import { BasicUser, ConformsToBasicUserInfo, PeopleCount, PowerUsageTimes, RoofType, WindowsOnRoof } from '../support/data/basicTestData'
 import { Pages } from '../support/pageFactory'
 
-/***********************************************************
-    Info on Steps Libraries:
-    ========================
-
-    Why?
-        - To improve reusability of test steps
-        - To improve readability of tests
-    
-    Why not use Cucumber instead?
-        - To prevent overhead from adding yet another library
-        - To prevent complexity that Cucumber brings to the project
-        - To increase the flexibility that Cucumber lacks
-    
-    Sins against good coding practices:
-        - using pronouns in method names (Could have used a different BDD way of describing steps)
-        - export the same instance multiple times under different names (GIVEN, AND, WHEN, THEN) in different files
-        - long method names (Tried to keep them as short as possible)
-
-    Other issues:
-        - Subclassing in Typescript seems to have it's own problems, code duplication in sublasses of
-          Generic steps as a result (creation of a singleton for every subclass' instance)
-
-***********************************************************/
-
 export class GenericSteps{
     public testUser = new BasicUser()
 
